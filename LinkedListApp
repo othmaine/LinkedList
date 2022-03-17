@@ -1,0 +1,87 @@
+class Link
+{
+    public int iData;
+    public double dData;
+    public Link next;
+    //--------------------------------------
+    public Link(int i,double d)
+    {
+        iData = i;
+        dData = d;
+    }
+    //----------------------------------------
+    public void displayLink()
+    {
+        System.out.println("iData = "+iData+ " ,dData = "+dData );
+    }
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class LinkList
+{
+    private Link first;
+    //--------------------------------------
+    
+    public LinkList()
+    {
+        first = null;
+    }
+    //--------------------------------------
+    
+    public boolean isEmpty()
+    {
+        return(first == null);
+    }
+    //--------------------------------------------
+    
+    public void insertFirst(int id,int dd)
+    {
+        Link newLink = new Link(id,dd);
+        newLink.next = first;
+        first = newLink;
+    }
+    //---------------------------------------------
+    
+    public Link deleteFirst()
+    {
+        Link temp = first;
+        first = first.next;
+        return temp;
+    }
+    //--------------------------------------------
+    
+    public void displayList()
+    {
+        System.out.print("List (first-->last) : ");
+        Link current = first;
+        while(current != null)
+                {
+                    current.displayLink();
+                    current = current.next;
+                }
+        System.out.println("");
+    }
+    //-------------------------------------------
+    
+    
+    
+}
+public class LinkedListApp 
+{
+    public static void main(String[] args) 
+    {
+        LinkList l = new LinkList();
+        l.insertFirst(1, 3);
+        l.insertFirst(6, 5);
+        l.insertFirst(4, 2);
+        l.insertFirst(2, 7);
+        l.deleteFirst();
+        l.displayList();
+        while(!l.isEmpty())
+            l.deleteFirst();
+        l.displayList();
+    }
+    
+}
